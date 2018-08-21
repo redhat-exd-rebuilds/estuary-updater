@@ -49,11 +49,13 @@ def test_build_complete(mock_koji_cs, mock_getBuild_complete):
 
 
 @mock.patch('koji.ClientSession')
-def test_modulebuild_complete(mock_koji_cs, mock_getBuild_module_complete, modulebuild_koji_tag):
+def test_modulebuild_complete(mock_koji_cs, mock_getBuild_module_complete,
+                              modulebuild_getTag, mock_getBuild_complete):
     """Test the Koji handler when it recieves a new build complete message."""
     mock_koji_session = mock.Mock()
     mock_koji_session.getBuild.return_value = mock_getBuild_module_complete
-    mock_koji_session.getTag.return_value = modulebuild_koji_tag
+    mock_koji_session.getTag.return_value = modulebuild_getTag
+    mock_koji_session.listTaggedRPMS.return_value = [[], [mock_getBuild_complete]]
     mock_koji_cs.return_value = mock_koji_session
 
     with open(path.join(message_dir, 'koji', 'modulebuild_complete.json'), 'r') as f:

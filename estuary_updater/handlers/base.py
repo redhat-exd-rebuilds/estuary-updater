@@ -112,11 +112,14 @@ class BaseHandler(object):
         :rtype: KojiBuild
         :return: the Koji Build retrieved or created from Neo4j
         """
-        try:
-            build_info = self.koji_session.getBuild(identifier, strict=True)
-        except Exception:
-            log.error('Failed to get brew build using the identifier {0}'.format(identifier))
-            raise
+        if type(identifier) is dict:
+            build_info = identifier
+        else:
+            try:
+                build_info = self.koji_session.getBuild(identifier, strict=True)
+            except Exception:
+                log.error('Failed to get brew build using the identifier {0}'.format(identifier))
+                raise
 
         build_params = {
             'epoch': build_info['epoch'],
