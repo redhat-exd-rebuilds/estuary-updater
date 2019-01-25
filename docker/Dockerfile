@@ -37,9 +37,5 @@ RUN pip3 install . --no-deps
 # Remove the default fedmsg config files
 RUN rm -f /etc/fedmsg.d/* && rm -rf ./fedmsg.d
 
-# consumer.crt, consumer.key, and estuary-updater.keytab must be in this volume at runtime
-VOLUME "/etc/estuary-updater"
-# The fedmsg configuration files must be in this volume at runtime
-VOLUME "/etc/fedmsg.d"
 USER 1001
 CMD ["bash", "/src/docker/run.sh"]
