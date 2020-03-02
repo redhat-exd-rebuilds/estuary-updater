@@ -4,7 +4,6 @@ neomodel
 PyOpenSSL
 recommonmark
 requests
-requests_kerberos
 sphinx
 sphinx_rtd_theme
 stomper

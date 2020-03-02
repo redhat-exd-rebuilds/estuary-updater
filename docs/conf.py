@@ -14,7 +14,7 @@ import pkg_resources
 from datetime import datetime
 
 
-autodoc_mock_imports = ['koji', 'fedmsg', 'fedmsg.config']
+autodoc_mock_imports = ['koji', 'fedmsg', 'fedmsg.config', 'requests_kerberos']
 
 
 # -- Path setup --------------------------------------------------------------
