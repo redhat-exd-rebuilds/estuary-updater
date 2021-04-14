@@ -2,16 +2,6 @@
 
 from setuptools import setup, find_packages
 
-requirements = []
-dependency_links = []
-with open('requirements.txt', 'r') as f:
-    for requirement in f.readlines():
-        if requirement.startswith('https://'):
-            requirements.append(requirement.rsplit('#egg=')[-1])
-            dependency_links.append(requirement)
-        else:
-            requirements.append(requirement)
-
 setup(
     name='estuary_updater',
     version='0.1',
@@ -20,9 +10,23 @@ setup(
     author_email='mprahl@redhat.com',
     license='GPLv3+',
     packages=find_packages(exclude=['tests']),
+    python_requires=">=3.6",
     include_package_data=True,
-    install_requires=requirements,
-    dependency_links=dependency_links,
+    install_requires=[
+        'estuary @ https://github.com/release-engineering/estuary-api/tarball/master#egg=estuary',
+        'fedmsg',
+        'fedmsg[commands]',
+        'fedmsg[consumers]',
+        'requests',
+        'requests_kerberos',
+        'koji',
+        'moksha.hub',
+        'PyOpenSSL',
+        'stomper',
+        # Pin the version until this is merged:
+        # https://github.com/neo4j-contrib/neomodel/pull/553
+        'neomodel==3.3.2',
+    ],
     entry_points="""
     [moksha.consumer]
     estuary_updater = estuary_updater.consumer:EstuaryUpdater
