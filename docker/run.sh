@@ -8,4 +8,4 @@ if [ -n "${CA_URL}" ] && [ ! -f "/tmp/.imported" ]; then
     touch /tmp/.imported
 fi
 
-exec fedmsg-hub-3
+exec fedmsg-hub

@@ -7,6 +7,23 @@
 Estuary Updater is a micro-service that updates the Neo4j graph database used by Estuary in real-time
 by reading and processing messages from the UMB.
 
+## Dependency Management
+
+To manage dependencies, this project uses [pip-tools](https://github.com/jazzband/pip-tools)
+so that the production dependencies are pinned and the hashes of the dependencies 
+are verified during installation.
+
+The unpinned dependencies are recorded in **setup.py**, and to generate 
+the **requirements.txt** file, run `make pin_dependencies`. This is only 
+necessary when modifying one of the __*requirements.in__ files. To upgrade a package, 
+use the `-P` argument of the `pip-compile` command.
+
+When installing the dependencies in a production environment, run 
+`pip install --require-hashes -r requirements.txt`. Alternatively, you may use 
+`pip-sync requirements.txt`, which will make sure your virtualenv only has the 
+packages listed in **requirements.txt**.
+
+
 ## Run the Unit Tests
 
 Since the unit tests require a running Neo4j instance, the tests are run in Docker containers using

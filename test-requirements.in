@@ -1,0 +1,10 @@
+flake8
+flake8-docstrings
+pytest
+pytest-cov
+pytz
+# For Python 3.6 pytest runs
+importlib-metadata>=0.12
+importlib-resources>=1.0
+# For Python 3.6 pytest runs
+typing-extensions>=3.6.4

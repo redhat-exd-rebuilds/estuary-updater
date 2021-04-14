@@ -1,29 +1,22 @@
-FROM fedora:30
+FROM registry.access.redhat.com/ubi8/ubi-minimal
 
-RUN dnf -y install \
-  --setopt=deltarpm=0 \
-  --setopt=install_weak_deps=false \
-  --setopt=tsflags=nodocs \
+RUN microdnf -y install \
   bash \
   nmap-ncat \
+  krb5-devel \
+  gcc \
+  openssl-devel \
   python3-devel \
-  # Install RPM dependencies from estuary-api otherwise they'll be installed via pip which won't map
-  # to production
-  python3-fedmsg \
-  python3-flake8 \
-  python3-flask \
-  python3-koji \
-  python3-neomodel \
-  python3-pyOpenSSL \
-  python3-pytest \
-  python3-pytest-cov \
-  python3-pytz \
-  python3-requests \
-  python3-requests-kerberos \
-  python3-tox \
-  python3-flake8-docstrings \
-  && dnf clean all
+  && microdnf clean all
 
 VOLUME /src
 WORKDIR /src
+
+COPY build-requirements.txt /tmp/build-requirements.txt
+COPY test-requirements.txt /tmp/test-requirements.txt
+# Set this variable to build cryptography package without Rust
+ENV CRYPTOGRAPHY_DONT_BUILD_RUST=1
+# Installing the Python dependencies for Estuary Updater
+RUN pip3 install -r /tmp/build-requirements.txt --require-hashes --no-deps \
+    && pip3 install -r /tmp/test-requirements.txt --require-hashes --no-deps --prefix /usr
 CMD ["bash", "docker/test.sh"]
