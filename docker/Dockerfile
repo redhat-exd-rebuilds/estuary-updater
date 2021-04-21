@@ -2,6 +2,7 @@ FROM registry.access.redhat.com/ubi8/ubi-minimal
 LABEL maintainer="Factory 2.0"
 
 ENV KRB5_CLIENT_KTNAME /etc/estuary-updater/estuary-updater.keytab
+ENV REQUESTS_CA_BUNDLE /etc/pki/tls/certs/ca-bundle.crt
 WORKDIR /src
 RUN microdnf -y install \
   bash \
