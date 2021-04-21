@@ -9,7 +9,7 @@ import datetime
 from estuary.models.errata import Advisory
 from estuary.models.koji import KojiBuild
 from estuary.models.user import User
-import mock
+from unittest import mock
 import pytz
 import pytest
 
