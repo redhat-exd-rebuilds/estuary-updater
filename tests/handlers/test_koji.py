@@ -10,7 +10,7 @@ from estuary.models.koji import ContainerKojiBuild, KojiBuild, ModuleKojiBuild
 from estuary.models.distgit import DistGitCommit
 import koji
 import pytz
-import mock
+from unittest import mock
 
 from tests import message_dir, utils
 from estuary_updater.handlers.koji import KojiHandler

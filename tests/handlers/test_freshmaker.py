@@ -9,7 +9,7 @@ from datetime import datetime
 from estuary.models.freshmaker import FreshmakerEvent, FreshmakerBuild
 from estuary.models.errata import Advisory
 from estuary.models.koji import ContainerKojiBuild
-import mock
+from unittest import mock
 import pytz
 
 from tests import message_dir
