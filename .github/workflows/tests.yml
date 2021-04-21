@@ -1,0 +1,21 @@
+name: Tests
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.9
+      - name: Install Dependencies
+        run: pip install --upgrade pip &&	pip install tox==3.23.0 docker-compose==1.28.5
+      - name: Run tests
+        run: ./scripts/run-tests.sh
