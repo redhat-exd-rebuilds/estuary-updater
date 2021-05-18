@@ -188,7 +188,7 @@ gssapi==1.6.12 \
     --hash=sha256:c2ec22c0d5719e44d4aaabe0e9641b590f9d235e248df902b5517571622ad278
     # via requests-gssapi
 gunicorn==20.1.0 \
-    --hash=sha256:e0a968b5ba15f8a328fdfd7ab1fcb5af4470c28aaf7e55df02a99bc13138e6e8
+    --hash=sha256:9dcc4547dbb1cb284accfb15ab5667a0e5d1881cc443e0677b4882a4067a807e
     # via estuary
 httplib2==0.19.1 \
     --hash=sha256:0b12617eeca7433d4c396a100eaecfa4b08ee99aa881e6df6e257a7aad5d533d \
