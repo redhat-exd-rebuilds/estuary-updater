@@ -116,8 +116,8 @@ docutils==0.16 \
     #   recommonmark
     #   sphinx
     #   sphinx-rtd-theme
-https://github.com/release-engineering/estuary-api/tarball/master#egg=estuary \
-    --hash=sha256:42ee37438819e012b49c380d5f7d2476848d82a8c9a1540deda384f5b96e04b5
+https://github.com/release-engineering/estuary-api/tarball/1.0.0#egg=estuary \
+    --hash=sha256:44b609a9865aadece64a68e824dcf76b3d59d63126511bed95fbbe582a817531
     # via estuary-updater (setup.py)
 fedmsg[commands,consumers]==1.1.2 \
     --hash=sha256:bddb68b536b9c6d95025ac1fefdd2f50f77247b2de416b0988363c86f5867c20
