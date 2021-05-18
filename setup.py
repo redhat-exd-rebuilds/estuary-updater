@@ -13,7 +13,7 @@ setup(
     python_requires=">=3.6",
     include_package_data=True,
     install_requires=[
-        'estuary @ https://github.com/release-engineering/estuary-api/tarball/master#egg=estuary',
+        'estuary @ https://github.com/release-engineering/estuary-api/tarball/1.0.0#egg=estuary',
         'fedmsg',
         'fedmsg[commands]',
         'fedmsg[consumers]',
