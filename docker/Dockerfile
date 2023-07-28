@@ -19,7 +19,8 @@ RUN sed -i '/default_ccache_name = KEYRING:persistent:%{uid}/d' /etc/krb5.conf
 ENV CRYPTOGRAPHY_DONT_BUILD_RUST=1
 COPY . .
 # Install dependencies and the application itself
-RUN pip3 install -r build-requirements.txt --require-hashes --no-deps \
+RUN pip3 install setuptools==46.1.0 \
+    && pip3 install -r build-requirements.txt --require-hashes --no-deps \
     && pip3 install -r requirements.txt --require-hashes --no-deps \
     && pip3 install . --no-deps
 # Remove the default fedmsg config files
