@@ -1,3 +1,4 @@
 # required by cryptography
 setuptools-rust
 wheel==0.37.1
+urllib3<2
