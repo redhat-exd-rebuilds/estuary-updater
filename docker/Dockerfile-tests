@@ -17,6 +17,7 @@ COPY test-requirements.txt /tmp/test-requirements.txt
 # Set this variable to build cryptography package without Rust
 ENV CRYPTOGRAPHY_DONT_BUILD_RUST=1
 # Installing the Python dependencies for Estuary Updater
-RUN pip3 install -r /tmp/build-requirements.txt --require-hashes --no-deps \
+RUN pip3 install setuptools==46.1.0 \
+    && pip3 install -r /tmp/build-requirements.txt --require-hashes --no-deps \
     && pip3 install -r /tmp/test-requirements.txt --require-hashes --no-deps --prefix /usr
 CMD ["bash", "docker/test.sh"]
